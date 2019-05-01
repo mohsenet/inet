@@ -1,0 +1,38 @@
+{% extends 'app_1/base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-6">
+            <form>
+            <div class="form-group">
+                <label>Please enter your ip:</label>
+                <input class="form-control" type="text" id="txt_1">
+                <button type="button" onclick="mohsen()" class="btn btn-primary btn-block form-control">Send</button>
+            </div>
+            </form>
+        </div>
+        <div class="col-sm-6">
+            <div class="alert alert-success">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <p><strong>IP</strong></p>
+                <p id="info">...</p>
+            </div>
+        </div>
+    </div>
+
+<script>
+    function mohsen(name, value) {
+        var xx = new XMLHttpRequest();
+        xx.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                document.getElementById("info").innerHTML = this.responseText;
+            }
+        };
+        xx.open('POST', '{% url "compute2"%}', true);
+        xx.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xx.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+        xx.send("ip=" + document.getElementById("txt_1").value);
+    }
+</script>
+
+{% endblock %}
