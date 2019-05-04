@@ -12,6 +12,8 @@ urlpatterns = [
     path('table_show', views.table_show, name="table_show"),
     path('ajax1', views.ajax1, name="ajax1"),
     path('compute2', views.compute2, name="compute2"),
+    path('data', views.data, name="data"),
+    path('save_data', views.save_data, name="save_data"),
 ]
 
 if settings.DEBUG:

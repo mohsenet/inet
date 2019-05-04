@@ -4,11 +4,23 @@ from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from app_1.models import Art
+from app_1.models import Art, Bigtext
 
 
 def index(request):
-    return render(request, 'app_1/index.html')
+    return render(request, 'app_1/index_2.html')
+
+
+def data(request):
+    return render(request, 'app_1/data.html', {})
+
+
+def save_data(request):
+    title = request.POST.get("title")
+    data = request.POST.get("data")
+    obj = Bigtext(title=title, data=data)
+    obj.save()
+    return HttpResponse(data)
 
 
 def compute2(request):

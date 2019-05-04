@@ -31,7 +31,7 @@
         xx.open('POST', '{% url "compute2"%}', true);
         xx.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xx.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
-        xx.send("ip=" + document.getElementById("txt_1").value);
+        xx.send("title=" + document.getElementById("title").value);
     }
 </script>
 
