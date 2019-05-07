@@ -4,10 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" >
-    <script src="{% static 'jquery.min.js' %}"></script>
-    <script src="{% static 'bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" >
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <title>Title</title>
+    {% block head %}
+    {% endblock %}
     <style>
         .affix {
             top: 0;
@@ -19,7 +22,7 @@
         }
         @font-face{
             font-family: mohsen;
-            src: url("{% static 'nasim.ttf' %}");
+            src: url("{% static 'fonts/Shabnam.ttf' %}");
         }
      </style>
 </head>
@@ -33,7 +36,8 @@
         <ul class="nav navbar-nav">
             <li class="active"><a href="{% url 'index' %}">Home</a></li>
             <li><a href="{% url 'data' %}">Menu1</a></li>
-            <li><a>Menu2</a></li>
+            <li><a href="{% url 'index_3' %}">Menu2</a></li>
+            <li><a href="{% url 'Desktop_slider' %}">Desktop_slider</a></li>
         </ul>
     </nav>
 
@@ -58,10 +62,11 @@
                 <div class="well">
                     <p><a href="#">Interface</a></p>
                     <p>
-                        <span class="label label-success" style="cursor: pointer;" onclick="window.location='{% url 'ajax1' %}';">Ajax</span>
-                        <span class="label label-default">W3school</span>
+                        <span class="label label-success" style="cursor: pointer;" onclick="window.location='{% url 'ajax1' %}';">ajax1</span>
+                        <span class="label label-danger" style="cursor: pointer;" onclick="window.location='{% url 'ajax2' %}';">ajax2</span>
+                        <span class="label label-default" style="cursor: pointer;" onclick="alert('hello')">W3school</span>
                         <span class="label label-info">News</span>
-                        <span class="label label-danger">Links</span>
+                        <span class="label label-danger" style="cursor: pointer;" onclick="window.location='{% url 'test' %}';">test</span>
                         <span class="label label-default" style="cursor: pointer;" onclick="window.location='{% url 'table_show' %}';">Table</span>
                         <span class="label label-success" style="cursor: pointer;" onclick="window.location='{% url 'simple_upload' %}';">Upload</span>
                     </p>

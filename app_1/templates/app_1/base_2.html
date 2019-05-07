@@ -12,14 +12,13 @@
     <title>Title</title>
 </head>
 <body>
+
     <header>
         <a href="#" class="logo">LOGO</a>
-        <div class="menu-toggle">
-
-        </div>
+        <div class="menu-toggle"></div>
         <nav>
             <ul>
-                <li><a href="#" class="active">Home</a></li>
+                <li><a href="{% url 'index' %}">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Services</a></li>
                 <li><a href="#">Team</a></li>
@@ -27,17 +26,17 @@
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>
-        <div class="clearfix">
+            <div class="clearfix">
+    </div>
 
-        </div>
     </header>
     <script type="text/javascript">
         $(document).ready(function () {
             $('.menu-toggle').click(function () {
                 $('.menu-toggle').toggleClass('active');
                 $('nav').toggleClass('active');
-            })
-        })
+            });
+        });
     </script>
 
 </body>

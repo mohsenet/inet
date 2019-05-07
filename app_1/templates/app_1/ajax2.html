@@ -1,0 +1,84 @@
+{% extends 'app_1/base.html' %}
+{% load staticfiles %}
+{% block head %}
+
+{% endblock %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="well">
+                <textarea rows="10" cols="60" id="txt_info" style="resize: vertical"></textarea>
+                <button type="button" id="btn1" class="btn btn-primary">Send with load</button>
+                <button type="button" id="btn2" class="btn btn-primary">Send with GET</button>
+                <button type="button" id="btn3" class="btn btn-primary">Send with POST (json response)</button>
+                <button type="button" id="btn4" class="btn btn-primary">Send with POST (text response)</button>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="alert alert-success">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <p><strong>IP</strong></p>
+                <p id="info">...</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#btn1").click(function () {
+                $("#info").load("{% static 'other/ajax2.txt' %}");
+            });
+            $("#btn2").click(function () {
+                $.get("{% url 'ajax2' %}", function (data, status) {
+                    alert("Data: " + data + "\nStatus: " + status);
+                });
+            });
+            $("#btn3").click(function () {
+                $.ajaxSetup("{% url 'ajax2_json_response' %}",);
+                var response = 'aa';
+                $.ajax({
+                    url: '{% url 'ajax2_json_response' %}',
+                    type: "POST",
+                    dataType: 'json',
+                    data: {
+                        'csrfmiddlewaretoken':$('[name="csrfmiddlewaretoken"]').val(),
+                        "title": document.getElementById("txt_info").value
+                    },
+                    success:function(result){
+                        $("#info").html(result.title);
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert("thrwnErroe: " + thrownError);
+                    }
+                });
+            });
+            $("#btn4").click(function () {
+                $.ajaxSetup("{% url 'ajax2_text_response' %}",);
+                $.ajax({
+                    url: '{% url 'ajax2_text_response' %}',
+                    type: "POST",
+                    dataType: 'text',
+                    data: {
+                        'csrfmiddlewaretoken':$('[name="csrfmiddlewaretoken"]').val(),
+                        "title": document.getElementById("txt_info").value
+                    },
+                    success:function(result){
+                        response = result;
+                        $("#info").html(result);
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert("thrwnErroe: " + thrownError);
+                    }
+                });
+            });
+        });
+    </script>
+        $.ajax({
+        url: '/fraud/get/status',
+        type: "POST",
+        dataType: 'json',
+        data: {
+            csrfmiddlewaretoken: page_unique_id,
+            statusId: statusID
+        },
+{% endblock %}

@@ -1,14 +1,25 @@
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.core.paginator import Paginator
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
 from app_1.models import Art, Bigtext
 
 
 def index(request):
+    return render(request, 'app_1/index.html')
+
+
+def index_2(request):
     return render(request, 'app_1/index_2.html')
+
+
+def test(request):
+    return render(request, 'app_1/test.html', {})
+
+def Desktop_slider(request):
+    return render(request, 'app_1/Desktop_slider.html', {})
 
 
 def data(request):
@@ -29,7 +40,29 @@ def compute2(request):
 
 
 def ajax1(request):
-    return render(request, 'app_1/ajax.html', {})
+    if request.method == 'POST':
+        title = request.POST.get("title")
+        return HttpResponse(title)
+    return render(request, 'app_1/ajax1.html', {})
+
+
+def ajax2(request):
+    return render(request, 'app_1/ajax2.html', {})
+
+
+def ajax2_json_response(request):
+    if request.method == 'POST':
+        title = request.POST.get("title")
+        return JsonResponse({"title": title})
+    return render(request, 'app_1/ajax2.html', {})
+
+
+def ajax2_text_response(request):
+    if request.method == 'POST':
+        title = request.POST.get("title")
+        return HttpResponse(title)
+    return render(request, 'app_1/ajax2.html', {})
+
 
 
 def table_show(request):

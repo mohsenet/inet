@@ -1,0 +1,61 @@
+@font-face {
+    font-family: mohsen;
+    src: url("../fonts/Shabnam.ttf");
+}
+
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family: mohsen, serif;
+}
+
+.slider
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #333333;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.slider input[type="radio"]
+{
+    position: relative;
+    z-index: 1;
+    margin-bottom: 40px;
+    outline: none;
+    cursor: pointer;
+}
+
+.slider .slide
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: url("../img/slidebackground.jpg");
+    background-size: 100% 100%;
+    transition: 1s;
+}
+
+.slider input[type="radio"].radio1:checked ~ .slide
+{
+    background-position-x: 0;
+}
+
+.slider input[type="radio"].radio2:checked ~ .slide
+{
+    background-position-x: -200px;
+}
+
+.slider input[type="radio"].radio3:checked ~ .slide
+{
+    background-position-x: -400px;
+}
+
+

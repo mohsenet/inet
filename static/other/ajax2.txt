@@ -1,0 +1,3 @@
+ 
+Hello
+You upload file in ajax2 section

@@ -1,12 +1,15 @@
-
+@font-face
+{
+    font-family: mohsen;
+    src: url("../fonts/Shabnam.ttf");
+}
 
 body
 {
     margin: 0;
     padding: 0;
-    font-family: SansSerif;
-    background: url(../img/login_background_2.jpg);
-    background-attachment: fixed;
+    font-family: mohsen, serif;
+    background: url("../img/d_2.jpg") fixed center;
 }
 
 header
@@ -19,24 +22,20 @@ header
     box-sizing: border-box;
     border-radius: 4px;
     box-shadow: 0 2px rgba(0,0,0,0.2);
+    opacity: 0.8;
 }
 
 .logo
 {
-    color: #069370;
+    color: #002752;
     height: 60px;
     font-size: 36px;
     line-height: 60px;
-    padding: 0 20px;
+    margin: 0 20px;
     text-align: center;
     box-sizing: border-box;
     float: left;
     font-weight: 700;
-    text-decoration: none;
-}
-
-.logo:link
-{
     text-decoration: none;
 }
 
@@ -78,6 +77,7 @@ nav ul li a:hover
     color: #ffffff;
     transition: 0.5s;
     border-radius: 4px;
+    opacity: 1;
 }
 
 @media (max-width: 1200px)
@@ -88,7 +88,7 @@ nav ul li a:hover
     }
 }
 
-@media (max-width: 768px)
+@media (max-width: 850px)
 {
     .menu-toggle
     {
@@ -101,7 +101,7 @@ nav ul li a:hover
         cursor: pointer;
         text-align: center;
         font-size: 30px;
-        color: #069370;
+        color: #002752;
         border-radius: 4px;
     }
     .menu-toggle:before
