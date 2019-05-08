@@ -25,6 +25,8 @@ urlpatterns = [
     path('compute_ckeditor', views.compute_ckeditor, name="compute_ckeditor"),
     path('get_ckeditor', views.get_ckeditor, name="get_ckeditor"),
     path('menufullscreen', views.menufullscreen, name="menufullscreen"),
+    path('cart_1', views.cart_1, name="cart_1"),
+    path('list', views.list, name="list"),
 ]
 
 if settings.DEBUG:

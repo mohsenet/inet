@@ -135,5 +135,13 @@ def menufullscreen(request):
     return render(request, 'app_1/menufullscreen.html', {})
 
 
+def cart_1(request):
+    return render(request, 'app_1/cart_1.html', {})
+
+
+def list(request):
+    return render(request, 'app_1/list.html', {})
+
+
 
 
