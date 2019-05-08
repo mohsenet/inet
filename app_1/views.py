@@ -3,6 +3,7 @@ from django.core.files.storage import FileSystemStorage
 from django.core.paginator import Paginator
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
+import json
 
 from app_1.models import Art, Bigtext
 
@@ -97,8 +98,6 @@ def compute(request):
 #             'uploaded_file_url': uploaded_file_url
 #         })
 #     return render(request, 'app_1/simple_upload.html')
-
-
 def simple_upload(request):
     if request.method == 'POST' and request.FILES['myfile']:
         myfile = request.FILES['myfile']
@@ -110,3 +109,31 @@ def simple_upload(request):
             "uploaded_file_url": uploaded_file_url
         })
     return render(request, 'app_1/simple_upload.html')
+
+
+def mandaliof(request):
+    return render(request, 'app_1/mandaliof.html', {})
+
+
+def ckeditor(request):
+    return render(request, 'app_1/ckeditor.html', {})
+
+
+def compute_ckeditor(request):
+    obj = Bigtext(title="0", data=request.POST.get("editor1"))
+    obj.save()
+    return render(request, 'app_1/index.html', {})
+
+
+def get_ckeditor(request):
+    app_20 = Bigtext.objects.get(pk=22)
+    data3 = app_20.data
+    return HttpResponse(data3)
+
+
+def menufullscreen(request):
+    return render(request, 'app_1/menufullscreen.html', {})
+
+
+
+

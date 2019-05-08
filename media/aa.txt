@@ -1,1 +1,0 @@
-'csrfmiddlewaretoken': $('[name="csrfmiddlewaretoken"]').val()

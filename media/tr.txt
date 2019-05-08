@@ -1,0 +1,15 @@
+<div class="droplet"></div>
+
+
+.droplet {
+  background: mediumaquamarine;
+  border-radius: 2% 50%;
+  height: 100px;
+  margin: 100px;
+  transition: all 3s;
+  transition-timing: ease-in-out;
+  width: 100px;
+}
+.droplet:hover {
+  transform: rotate(1080deg);
+}

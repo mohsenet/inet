@@ -20,6 +20,11 @@ urlpatterns = [
     path('save_data', views.save_data, name="save_data"),
     path('test', views.test, name="test"),
     path('Desktop_slider', views.Desktop_slider, name="Desktop_slider"),
+    path('mandaliof', views.mandaliof, name="mandaliof"),
+    path('ckeditor', views.ckeditor, name="ckeditor"),
+    path('compute_ckeditor', views.compute_ckeditor, name="compute_ckeditor"),
+    path('get_ckeditor', views.get_ckeditor, name="get_ckeditor"),
+    path('menufullscreen', views.menufullscreen, name="menufullscreen"),
 ]
 
 if settings.DEBUG:

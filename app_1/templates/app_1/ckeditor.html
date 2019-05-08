@@ -1,0 +1,46 @@
+{% extends 'app_1/base.html' %}
+{% load staticfiles %}
+{% block head %}
+    <script src="{% static 'ckeditor/ckeditor.js' %}"></script>
+{% endblock %}
+{% block content %}
+        <form action="{% url 'compute_ckeditor' %}" method="post">
+            {% csrf_token %}
+            <textarea name="editor1" id="editor1" rows="10" cols="80">
+                This is my textarea to be replaced with CKEditor.
+            </textarea>
+            <button type="submit" class="btn btn-success">Send</button>
+            <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace( 'editor1' );
+            </script>
+        </form>
+        <br/>
+        <br/>
+        <br/>
+        <button type="button" id="text_area" class="btn btn-primary">get data from ckeditor</button>
+        <script>
+            $(document).ready(function () {
+            $("#text_area").click(function () {
+                $.ajaxSetup("{% url 'get_ckeditor' %}",);
+                $.ajax({
+                    url: '{% url 'get_ckeditor' %}',
+                    type: "POST",
+                    dataType: 'text',
+                    data: {
+                        'csrfmiddlewaretoken':$('[name="csrfmiddlewaretoken"]').val(),
+
+                    },
+                    success:function(result){
+                        CKEDITOR.instances.editor1.setData(result);
+                        $("#inf").html(result);
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert("thrwnErroe: " + thrownError);
+                    }
+                });
+            });
+            })
+        </script>
+{% endblock %}
