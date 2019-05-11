@@ -17,30 +17,103 @@
             </script>
         </form>
         <br/>
-        <br/>
-        <br/>
+
+
+
+        <style>
+            h1 {
+              margin: 0 0 0.25em;
+            }
+            /* Reset Select */
+            select {
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              -ms-appearance: none;
+              appearance: none;
+              outline: 0;
+              box-shadow: none;
+              border: 0 !important;
+              background: #b9bbbe;
+              background-image: none;
+            }
+            /* Remove IE arrow */
+            select::-ms-expand {
+              display: none;
+            }
+            /* Custom Select */
+            .select {
+              position: relative;
+              display: flex;
+              width: 20em;
+              height: 3em;
+              line-height: 3;
+              background: #b9bbbe;
+              overflow: hidden;
+              border-radius: .25em;
+            }
+            select {
+              flex: 1;
+              padding: 0 .5em;
+              color: #fff;
+              cursor: pointer;
+            }
+            /* Arrow */
+            .select::after {
+              content: '\25BC';
+              position: absolute;
+              top: 0;
+              right: 0;
+              padding: 0 1em;
+              background: #999999;
+              cursor: pointer;
+              pointer-events: none;
+              -webkit-transition: .25s all ease;
+              -o-transition: .25s all ease;
+              transition: .25s all ease;
+            }
+            /* Transition */
+            .select:hover::after {
+              color: #1b1e21;
+            }
+
+            #select_id {
+                color: #080808;
+            }
+
+        </style>
+
         <button type="button" id="text_area" class="btn btn-primary">get data from ckeditor</button>
+        <div class="select">
+          <select id="select_id">
+            {% for contact in contacts %}
+                <option value="{{ contact.id }}" >{{ contact.id }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
         <script>
             $(document).ready(function () {
-            $("#text_area").click(function () {
-                $.ajaxSetup("{% url 'get_ckeditor' %}",);
-                $.ajax({
-                    url: '{% url 'get_ckeditor' %}',
-                    type: "POST",
-                    dataType: 'text',
-                    data: {
-                        'csrfmiddlewaretoken':$('[name="csrfmiddlewaretoken"]').val(),
-
-                    },
-                    success:function(result){
-                        CKEDITOR.instances.editor1.setData(result);
-                        $("#inf").html(result);
-                    },
-                    error: function (xhr, ajaxOptions, thrownError) {
-                        alert("thrwnErroe: " + thrownError);
-                    }
+                $("#text_area").click(function () {
+                    var e = document.getElementById("select_id");
+                    var str_selected = e.options[e.selectedIndex].value;
+                    $.ajaxSetup("{% url 'get_ckeditor' %}",);
+                    $.ajax({
+                        url: '{% url 'get_ckeditor' %}',
+                        type: "POST",
+                        dataType: 'text',
+                        data: {
+                            'csrfmiddlewaretoken':$('[name="csrfmiddlewaretoken"]').val(),
+                            'selected_item': str_selected,
+                        },
+                        success:function(result){
+                            CKEDITOR.instances.editor1.setData(result);
+                            //$("#inf").html(result);
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert("thrwnErroe: " + thrownError);
+                        }
+                    });
                 });
-            });
             })
         </script>
 {% endblock %}

@@ -27,6 +27,9 @@ urlpatterns = [
     path('menufullscreen', views.menufullscreen, name="menufullscreen"),
     path('cart_1', views.cart_1, name="cart_1"),
     path('list', views.list, name="list"),
+    path('server', views.server, name="server"),
+    path('compute_server', views.compute_server, name="compute_server"),
+
 ]
 
 if settings.DEBUG:

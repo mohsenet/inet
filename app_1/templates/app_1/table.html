@@ -4,6 +4,7 @@
     <table class="table">
         <thead style="background: #999999;">
             <tr>
+                <th>ID</th>
                 <th>IP</th>
                 <th>Port</th>
             </tr>
@@ -11,6 +12,7 @@
         <tbody>
         {% for contact in contacts %}
             <tr>
+                <td>{{ contact.id }}</td>
                 <td>{{ contact.ip }}</td>
                 <td>{{ contact.port }}</td>
             </tr>

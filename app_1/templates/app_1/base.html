@@ -8,6 +8,7 @@
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/lib.js' %}"></script>
     <title>Title</title>
     {% block head %}
     {% endblock %}
@@ -74,6 +75,7 @@
                         <span class="label label-default" style="cursor: pointer;" onclick="window.location='{% url 'menufullscreen' %}';">menufullscreen</span>
                         <span class="label label-success" style="cursor: pointer;" onclick="window.location='{% url 'cart_1' %}';">Cart_1</span>
                         <span class="label label-danger" style="cursor: pointer;" onclick="window.location='{% url 'list' %}';">list</span>
+                        <span class="label label-primary" style="cursor: pointer;" onclick="window.location='{% url 'server' %}';">server</span>
                     </p>
                 </div>
                 <div class="alert alert-success fade in">

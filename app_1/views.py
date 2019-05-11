@@ -5,7 +5,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 import json
 
-from app_1.models import Art, Bigtext
+from app_1.models import Art, Bigtext, Server
 
 
 def index(request):
@@ -65,7 +65,6 @@ def ajax2_text_response(request):
     return render(request, 'app_1/ajax2.html', {})
 
 
-
 def table_show(request):
     # contact_list = Art.objects.all()
     contact_list = Art.objects.get_queryset().order_by('id')
@@ -116,7 +115,8 @@ def mandaliof(request):
 
 
 def ckeditor(request):
-    return render(request, 'app_1/ckeditor.html', {})
+    contacts = Bigtext.objects.all()
+    return render(request, 'app_1/ckeditor.html', {"contacts": contacts})
 
 
 def compute_ckeditor(request):
@@ -124,9 +124,10 @@ def compute_ckeditor(request):
     obj.save()
     return render(request, 'app_1/index.html', {})
 
-
+# todo: Bigtext.objects.get(request.pk)
 def get_ckeditor(request):
-    app_20 = Bigtext.objects.get(pk=22)
+    val = request.POST.get("selected_item")
+    app_20 = Bigtext.objects.get(pk=int(val))
     data3 = app_20.data
     return HttpResponse(data3)
 
@@ -141,6 +142,19 @@ def cart_1(request):
 
 def list(request):
     return render(request, 'app_1/list.html', {})
+
+
+def server(request):
+    return render(request, 'app_1/server.html', {})
+
+
+def compute_server(request):
+    name = request.POST.get("name")
+    os =request.POST.get("os")
+    obj = Server(name=name, os=os)
+    obj.save()
+
+    return render(request, 'app_1/index.html', {})
 
 
 
