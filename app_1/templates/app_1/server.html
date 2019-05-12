@@ -3,6 +3,7 @@
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/select2.min.css' %}">
     <script src="{% static 'js/select2.min.js' %}"></script>
+    <script src="{% static 'js/lib.js' %}"></script>
 {% endblock %}
 {% block content %}
     <div class="row">
@@ -11,7 +12,7 @@
         <div class="col-sm-8">
             <div class="well well-lg">
                 <div class="form-group">
-                    <form action="{% url 'compute_server' %}" method="post">
+                    <form action="{% url 'compute_server' %}" method="post" class="was-validated">
                         {% csrf_token %}
 
                         <div class="form-group row">
@@ -62,9 +63,7 @@
                         </div>
 
                         <script>
-                            $(document).ready(function() {
-                                $('.js-example-basic-single').select2();
-                            });
+                            lib_select2();
                         </script>
                     </form>
                 </div>
@@ -82,32 +81,10 @@
                     <label>OS Version:</label>
                     <input type="text" name="os_version" id="os_version" class="form-control">
                 </div>
-                <button id="os_param" class="btn btn-primary">Save</button>
+                <button id="btn_save" class="btn btn-primary">Save</button>
                 <p id="info"></p>
                 <script>
-                    $(document).ready(function () {
-                        $("#os_param").click(function () {
-                            var e = document.getElementById("os_name").value;
-                            var ee = document.getElementById("os_version").value;
-                            $.ajaxSetup("{% url 'server' %}",);
-                            $.ajax({
-                                url:'{% url 'server' %}',
-                                type: 'POST',
-                                datatype: 'text',
-                                data: {
-                                    'csrfmiddlewaretoken':$('[name="csrfmiddlewaretoken"]').val(),
-                                    'os_name': e,
-                                    'os_version': ee,
-                                },
-                                success: function(result){
-                                    $('#info').text(result);
-                                },
-                                error: function (xhr, ajaxOptions, thrownError) {
-                                    alert("thrwnErroe: " + thrownError);
-                                },
-                            });
-                        });
-                    });
+                    lib_ajax("btn_save", "os_name", "os_version", "{% url 'server' %}");
                 </script>
             </div>
         </div>
