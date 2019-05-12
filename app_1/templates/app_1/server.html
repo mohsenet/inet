@@ -1,26 +1,116 @@
 {% extends 'app_1/base.html' %}
+{% load staticfiles %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/select2.min.css' %}">
+    <script src="{% static 'js/select2.min.js' %}"></script>
+{% endblock %}
 {% block content %}
     <div class="row">
+
+        <!-- ################ Server ################ -->
         <div class="col-sm-8">
             <div class="well well-lg">
-                <form action="{% url 'compute_server' %}" method="post">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <label>Server Name:</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>OS Type:</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Save</button>
-                </form>
+                <div class="form-group">
+                    <form action="{% url 'compute_server' %}" method="post">
+                        {% csrf_token %}
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Server Name:</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="name" placeholder="Enter server name ...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">OS Type:</label>
+                            <div class="col-sm-9">
+                                <select class="js-example-basic-single form-control" name="os" style="width: 100%">
+                                    {% for item in items %}
+                                        <option value={{ item.id }}>{{ item.os_name }} _ {{ item.os_version }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3">Art:</label>
+                            <div class="col-sm-9">
+                                <select class="js-example-basic-single form-control" name="art" style="width: 100%">
+                                    {% for art in arts %}
+                                        <option value={{ art.id }}>{{ art.ip }} _ {{ art.port }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3">Comment:</label>
+                            <div class="col-sm-9">
+                                <select class="js-example-basic-single form-control" name="comment" style="width: 100%">
+                                    {% for comment in comments %}
+                                        <option value={{ comment.id }}>{{ comment.title }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-9">
+                                <button type="submit" class="btn btn-primary btn-block form-control">Save</button>
+                            </div>
+                        </div>
+
+                        <script>
+                            $(document).ready(function() {
+                                $('.js-example-basic-single').select2();
+                            });
+                        </script>
+                    </form>
+                </div>
             </div>
         </div>
+
+        <!-- ################ OS ################ -->
         <div class="col-sm-4">
             <div class="well well-lg">
-                Info
+                <div class="form-group">
+                    <label>OS Name:</label>
+                    <input type="text" name="os_name" id="os_name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>OS Version:</label>
+                    <input type="text" name="os_version" id="os_version" class="form-control">
+                </div>
+                <button id="os_param" class="btn btn-primary">Save</button>
+                <p id="info"></p>
+                <script>
+                    $(document).ready(function () {
+                        $("#os_param").click(function () {
+                            var e = document.getElementById("os_name").value;
+                            var ee = document.getElementById("os_version").value;
+                            $.ajaxSetup("{% url 'server' %}",);
+                            $.ajax({
+                                url:'{% url 'server' %}',
+                                type: 'POST',
+                                datatype: 'text',
+                                data: {
+                                    'csrfmiddlewaretoken':$('[name="csrfmiddlewaretoken"]').val(),
+                                    'os_name': e,
+                                    'os_version': ee,
+                                },
+                                success: function(result){
+                                    $('#info').text(result);
+                                },
+                                error: function (xhr, ajaxOptions, thrownError) {
+                                    alert("thrwnErroe: " + thrownError);
+                                },
+                            });
+                        });
+                    });
+                </script>
             </div>
         </div>
+
     </div>
 {% endblock %}

@@ -5,7 +5,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 import json
 
-from app_1.models import Art, Bigtext, Server
+from app_1.models import Art, Bigtext, Server, OS
 
 
 def index(request):
@@ -120,9 +120,14 @@ def ckeditor(request):
 
 
 def compute_ckeditor(request):
-    obj = Bigtext(title="0", data=request.POST.get("editor1"))
+    title = request.POST.get("title")
+    editor1 = request.POST.get("editor1")
+    obj = Bigtext()
+    obj.title = title
+    obj.data = editor1
     obj.save()
     return render(request, 'app_1/index.html', {})
+
 
 # todo: Bigtext.objects.get(request.pk)
 def get_ckeditor(request):
@@ -145,15 +150,38 @@ def list(request):
 
 
 def server(request):
-    return render(request, 'app_1/server.html', {})
+    if request.POST.get("os_name"):
+        name = request.POST.get("os_name")
+        version = request.POST.get("os_version")
+        os = OS()
+        os.os_name = name
+        os.os_version = version
+        os.save()
+        return HttpResponse("Saved your info.")
+    items = OS.objects.all()
+    arts = Art.objects.all()
+    comments = Bigtext.objects.all()
+    return render(request, 'app_1/server.html', {
+        "items": items,
+        "arts": arts,
+        "comments": comments,
+    })
 
 
 def compute_server(request):
     name = request.POST.get("name")
-    os =request.POST.get("os")
-    obj = Server(name=name, os=os)
+    os = request.POST.get("os")
+    art = request.POST.get("art")
+    comment = request.POST.get("comment")
+    obj = Server()
+    obj.name = name
+    os_obj = OS.objects.get(id=int(os))
+    obj.os = os_obj
+    art_obj = Art.objects.get(id=int(art))
+    obj.art = art_obj
+    bigtext_obj = Bigtext.objects.get(id=int(comment))
+    obj.comment = bigtext_obj
     obj.save()
-
     return render(request, 'app_1/index.html', {})
 
 
