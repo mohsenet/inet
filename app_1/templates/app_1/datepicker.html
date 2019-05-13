@@ -1,0 +1,28 @@
+{% extends 'app_1/base.html' %}
+{% load staticfiles %}
+{% block head %}
+    <link type="text/css" href="{% static 'css/persian-datepicker.css' %}" rel="stylesheet" />
+    <script type="text/javascript" src="{% static 'js/persian-datepicker.js' %}"></script>
+{% endblock %}
+{% block content %}
+
+    <div class="form-group row">
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-4">
+            <div class="well">
+                <label style="direction: rtl; font-family: mohsen;">تاریخ:</label>
+                <input type="text" id="datepicker1" class="form-control"/>
+            </div>
+        </div>
+        <div class="col-sm-4">
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $('#datepicker1').datepicker({
+            changeMonth: true,
+            changeYear: true
+        });
+    </script>
+{% endblock %}

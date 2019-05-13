@@ -29,7 +29,7 @@ urlpatterns = [
     path('list', views.list, name="list"),
     path('server', views.server, name="server"),
     path('compute_server', views.compute_server, name="compute_server"),
-
+    path('datepicker', views.datepicker, name="datepicker"),
 ]
 
 if settings.DEBUG:

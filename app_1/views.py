@@ -185,5 +185,8 @@ def compute_server(request):
     return render(request, 'app_1/index.html', {})
 
 
+def datepicker(request):
+    return render(request, 'app_1/datepicker.html', {})
+
 
 
