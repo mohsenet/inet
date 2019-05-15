@@ -30,6 +30,7 @@ urlpatterns = [
     path('server', views.server, name="server"),
     path('compute_server', views.compute_server, name="compute_server"),
     path('datepicker', views.datepicker, name="datepicker"),
+    path('queryset', views.queryset, name="queryset"),
 ]
 
 if settings.DEBUG:

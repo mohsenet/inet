@@ -1,0 +1,48 @@
+{% extends 'app_1/base.html' %}
+{% block content %}
+    <style>
+        .ho:hover {
+            background: #286090;
+            color: #ffffff;
+        }
+        thead {
+            background: #204d74;
+            color: #FFFFFF;
+        }
+        .div-table{
+            border: solid 2px #5b80b2;
+            border-radius: 5px;
+        }
+    </style>
+
+    <!-- ################### Title ################### -->
+    <div style="border: solid 2px #5b80b2; border-radius: 5px;margin: 5px">
+        <h3 style="font-weight: bold;">queryset count is: <span style="color: #993333; ">{{ queryset_count }}</span></h3>
+    </div>
+
+    <!-- ################### Table ################### -->
+    <div class="table-responsive div-table">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>os_id</th>
+                <th>art_id</th>
+                <th>comment_id</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in queryset_all %}
+                <tr class="ho">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.os_id }}</td>
+                    <td>{{ item.art_id }}</td>
+                    <td>{{ item.comment_id }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}

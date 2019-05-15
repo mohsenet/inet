@@ -3,6 +3,7 @@ from django.core.files.storage import FileSystemStorage
 from django.core.paginator import Paginator
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
+from django.db.models import Q
 import json
 
 from app_1.models import Art, Bigtext, Server, OS
@@ -187,6 +188,35 @@ def compute_server(request):
 
 def datepicker(request):
     return render(request, 'app_1/datepicker.html', {})
+
+
+def queryset(request):
+    # qs = Server.objects.filter(name__startswith="SRV")
+    # qs = Server.objects.all()
+    # qs = Server.objects.filter(name__contains="MM")
+    # OR
+    # qs = Server.objects.filter(name__contains="MM") | Server.objects.filter(name__contains="S")
+    # qs = Server.objects.filter(Q(name__contains="MM") | Q(name__contains="S"))
+    # AND
+    # qs = Server.objects.filter(name__startswith="M") & Server.objects.filter(name__endswith="r")
+    # qs = Server.objects.filter(name__startswith="M", name__endswith="r")
+    #
+    # qs = Server.objects.filter(name__iexact="srV_sMm")  # no sensitive (insensitive)
+    # qs = Server.objects.filter(~Q(os_id__gt=4))  # NOT
+    # union
+    # qs_1 = Server.objects.filter(os_id__gt=4)
+    # qs_2 = Server.objects.filter(os_id__lte=4)
+    # qs = qs_1.union(qs_2)
+    #
+    # qs = Server.objects.filter(os_id__gt=4).values("name", "art_id")
+    #
+    qs = Server.objects.filter(comment_id__in=[10]).values("name", "os_id")
+
+    contents = {
+        "queryset_count": qs.count(),
+        "queryset_all": qs,
+    }
+    return render(request, 'app_1/queryset.html', contents)
 
 
 
