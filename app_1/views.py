@@ -3,7 +3,7 @@ from django.core.files.storage import FileSystemStorage
 from django.core.paginator import Paginator
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
-from django.db.models import Q
+from django.db.models import Q, OuterRef, Subquery
 import json
 
 from app_1.models import Art, Bigtext, Server, OS
@@ -191,6 +191,10 @@ def datepicker(request):
 
 
 def queryset(request):
+    # Sample
+    # MyModel.object.filter(pk=1).delete()
+    # MyModel.object.all().delete()
+    #
     # qs = Server.objects.filter(name__startswith="SRV")
     # qs = Server.objects.all()
     # qs = Server.objects.filter(name__contains="MM")
@@ -211,6 +215,13 @@ def queryset(request):
     # qs = Server.objects.filter(os_id__gt=4).values("name", "art_id")
     #
     qs = Server.objects.filter(comment_id__in=[10]).values("name", "os_id")
+    #
+    # Subquery
+    # qs1 = OS.objects.all()
+    # qs = Server.objects.filter(os_id__in=Subquery(qs1.values('id')))
+    # OS[all_field]+Server[name_field]
+    # queryset = Server.objects.filter(os_id=OuterRef("pk")).order_by("-art_id")
+    # qsqs = OS.objects.all().annotate(most_os_server=Subquery(queryset.values('name')[:1]))
 
     contents = {
         "queryset_count": qs.count(),
