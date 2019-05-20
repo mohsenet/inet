@@ -7,6 +7,7 @@ from django.db.models import Q, OuterRef, Subquery
 import json
 
 from app_1.models import Art, Bigtext, Server, OS
+import base64
 
 
 def index(request):
@@ -196,7 +197,7 @@ def queryset(request):
     # MyModel.object.all().delete()
     #
     # qs = Server.objects.filter(name__startswith="SRV")
-    # qs = Server.objects.all()
+    qs = Server.objects.all()
     # qs = Server.objects.filter(name__contains="MM")
     # OR
     # qs = Server.objects.filter(name__contains="MM") | Server.objects.filter(name__contains="S")
@@ -214,7 +215,7 @@ def queryset(request):
     #
     # qs = Server.objects.filter(os_id__gt=4).values("name", "art_id")
     #
-    qs = Server.objects.filter(comment_id__in=[10]).values("name", "os_id")
+    # qs = Server.objects.filter(comment_id__in=[10]).values("name", "os_id")
     #
     # Subquery
     # qs1 = OS.objects.all()
@@ -228,6 +229,23 @@ def queryset(request):
         "queryset_all": qs,
     }
     return render(request, 'app_1/queryset.html', contents)
+
+
+def flex(request):
+    text = "data to be encoded"
+    encoded = base64.b64encode(b'data to be encoded')
+    enc = request.POST.get("data")
+
+    decode_data = ""
+    if enc != None:
+        decode_data = base64.b64decode(enc)
+
+    return render(request, "app_1/flex.html", {
+        "text": text,
+        "encoded": encoded,
+        "server_received": decode_data,
+    })
+
 
 
 

@@ -34,13 +34,18 @@
         </thead>
         <tbody>
             {% for item in queryset_all %}
-                <tr class="ho">
-                    <td>{{ item.id }}</td>
+                <tr class="ho" >
+                    <td onclick="aler()">{{ item.id }}</td>
                     <td>{{ item.name }}</td>
                     <td>{{ item.os_id }}</td>
                     <td>{{ item.art_id }}</td>
                     <td>{{ item.comment_id }}</td>
                 </tr>
+                <script>
+                    function aler() {
+                        alert('You click: ' + '{{ item.name }}');
+                    }
+                </script>
             {% endfor %}
         </tbody>
     </table>

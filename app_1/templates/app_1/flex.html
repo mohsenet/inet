@@ -1,0 +1,105 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <title>Title</title>
+    <style>
+        body {
+            background: lavender;
+        }
+        .container_1 {
+              display: flex;
+              height: 200px;
+              justify-content: center;
+              align-items: flex-start;
+              background-color: DodgerBlue;
+        }
+        .container_1 > div {
+              background-color: #f1f1f1;
+              width: 100px;
+              margin: 10px;
+              text-align: center;
+              line-height: 75px;
+              font-size: 30px;
+                border-radius: 5px;
+        }
+
+        .container_2 {
+            background: #53aa78;
+            width: 100%;
+            height: 200px;
+            text-align: center;
+
+        }
+        .container_3 {
+            background: #c7c78f;
+            width: 100%;
+            height: 200px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container_1">
+    <div>big</div>
+    <div>data</div>
+    <div>hadoop</div>
+</div>
+
+<div class="container_2">
+    <h3 style="color: #ffffff;">jQuery - getting custom attribute from selected option</h3>
+
+    <!-- ################# Focus ################# -->
+    <select id="location">
+        <option value="aa" mohsen="20">a</option>
+        <option value="bb" mohsen="50">b</option>
+        <option value="cc" mohsen="100">c</option>
+    </select>
+
+    <input type="text" id="setMyTag" value="...">
+
+    <!-- ################# Focus ################# -->
+    <script>
+        $(function () {
+            $("#location").change(function () {
+                var option = $('option:selected', this).attr('mohsen');
+                $("#setMyTag").val(option);
+            })
+        })
+    </script>
+</div>
+
+<div class="container_3" onclick="func_1()">
+
+    <p>text is: <strong>{{ text }}</strong></p>
+    <p>encoded is: <strong>{{ encoded }}</strong></p>
+    <p id="base64">...</p>
+    <hr/>
+
+    <form action="{% url 'flex' %}" method="post">
+        {% csrf_token %}
+        <input name="data" id="input_64" onclick="func_2()">
+        <input type="submit" value="Send">
+
+    </form>
+
+    <p id="rec_server">receive NULL</p>
+
+    <script>
+        function func_1() {
+            document.getElementById("base64").innerHTML = '{{ encoded }}';
+            document.getElementById("rec_server").innerHTML = '{{ server_received }}';
+        }
+        function func_2() {
+            var str = "data to be encoded";
+            $("#input_64").val(window.btoa(str));
+        }
+    </script>
+
+</div>
+</body>
+</html>
