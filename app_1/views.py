@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.db.models import Q, OuterRef, Subquery
 import json
 
+from app_1.lib.class_1 import oop_1
 from app_1.models import Art, Bigtext, Server, OS
 import base64
 
@@ -16,6 +17,11 @@ def index(request):
 
 def index_2(request):
     return render(request, 'app_1/index_2.html')
+
+
+def class_concept(request):
+    a = oop_1("a")
+    return render(request, 'app_1/class_concept.html', eval(a))
 
 
 def test(request):

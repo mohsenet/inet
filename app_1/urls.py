@@ -32,6 +32,7 @@ urlpatterns = [
     path('datepicker', views.datepicker, name="datepicker"),
     path('queryset', views.queryset, name="queryset"),
     path('flex', views.flex, name="flex"),
+    path('class_concept', views.class_concept, name="class_concept"),
 ]
 
 if settings.DEBUG:
