@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e27ecf9-a222-428c-aee5-3415861ae441" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app_1/templates/app_1/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_1/templates/app_1/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_1/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app_1/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_1/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app_1/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_1/templates/app_1/audio.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_1/templates/app_1/audio.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,11 +25,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app_1/templates/app_1/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="84" column="22" lean-forward="true" selection-start-line="84" selection-start-column="22" selection-end-line="84" selection-end-column="22" />
+            <state relative-caret-position="386">
+              <caret line="83" column="24" lean-forward="true" selection-start-line="83" selection-start-column="24" selection-end-line="83" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -55,10 +54,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app_1/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
+            <state relative-caret-position="491">
               <caret line="279" column="39" selection-start-line="279" selection-start-column="39" selection-end-line="279" selection-end-column="39" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app_1/templates/app_1/audio.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="32" column="39" lean-forward="true" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
+              <folding>
+                <element signature="n#style#0;n#pre#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -136,10 +147,10 @@
         <option value="$PROJECT_DIR$/app_1/templates/app_1/class_concept_1.html" />
         <option value="$PROJECT_DIR$/app_1/templates/app_1/class_concept_2.html" />
         <option value="$PROJECT_DIR$/app_1/templates/app_1/class_concept.html" />
-        <option value="$PROJECT_DIR$/app_1/templates/app_1/audio.html" />
         <option value="$PROJECT_DIR$/app_1/urls.py" />
         <option value="$PROJECT_DIR$/app_1/views.py" />
         <option value="$PROJECT_DIR$/app_1/templates/app_1/base.html" />
+        <option value="$PROJECT_DIR$/app_1/templates/app_1/audio.html" />
       </list>
     </option>
   </component>
@@ -287,12 +298,12 @@
       <workItem from="1558427295472" duration="9184000" />
       <workItem from="1558497115473" duration="221000" />
       <workItem from="1558757895319" duration="16393000" />
-      <workItem from="1558843039228" duration="8509000" />
+      <workItem from="1558843039228" duration="11400000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="356639000" />
+    <option name="totallyTimeSpent" value="359530000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -575,13 +586,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app_1/templates/app_1/audio.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="74" selection-start-line="5" selection-start-column="74" selection-end-line="5" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app_1/templates/app_1/class_concept.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -633,9 +637,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app_1/templates/app_1/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="83" column="24" lean-forward="true" selection-start-line="83" selection-start-column="24" selection-end-line="83" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app_1/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
+        <state relative-caret-position="491">
           <caret line="279" column="39" selection-start-line="279" selection-start-column="39" selection-end-line="279" selection-end-column="39" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
@@ -643,10 +654,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app_1/templates/app_1/base.html">
+    <entry file="file://$PROJECT_DIR$/app_1/templates/app_1/audio.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="84" column="22" lean-forward="true" selection-start-line="84" selection-start-column="22" selection-end-line="84" selection-end-column="22" />
+        <state relative-caret-position="300">
+          <caret line="32" column="39" lean-forward="true" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
+          <folding>
+            <element signature="n#style#0;n#pre#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
