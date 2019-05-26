@@ -1,10 +1,14 @@
 {% extends 'app_1/base.html' %}
 {% load staticfiles %}
 {% block content %}
+<style>
+    a:link {text-decoration: none;}
+    pre {text-align: left;}
+</style>
 
  <div class="panel-group" id="accordion">
 
-   <div class="panel panel-default">
+   <div class="panel panel-success">
     <div class="panel-heading">
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
@@ -13,8 +17,15 @@
     </div>
     <div id="collapse1" class="panel-collapse collapse">
       <div class="panel-body">
+        <p>THE JOGGER</p>
         <audio controls>
           <source src="{% static 'other/01_The_jogger.mp3' %}" type="audio/mp3">
+          Your browser does not support the audio element.
+        </audio>
+        <br /><hr/>
+        <p>TV</p>
+        <audio controls>
+          <source src="{% static 'other/02_TV.mp3' %}" type="audio/mp3">
           Your browser does not support the audio element.
         </audio>
       </div>
@@ -28,9 +39,9 @@
         THE JOGGER</a>
       </h4>
     </div>
-    <div id="collapse2" class="panel-collapse collapse in">
+    <div id="collapse2" class="panel-collapse collapse">
       <div class="panel-body">
-          <p style="text-align: left;">
+          <pre>
 Dan and Sue are police officers in London. It is a Tuesday
 morning, and Dan is angry.
 Whats the m atter, Dan? Sue asks.
@@ -86,7 +97,7 @@ doing anything wrong! He runs away.
 What do we do now ? Sue asks. W here is the old
 womans money, and her purse?
 I dont know , says Dan. Somebody has it. But who?
-        </p>
+        </pre>
       </div>
     </div>
   </div>
@@ -95,14 +106,45 @@ womans money, and her purse?
     <div class="panel-heading">
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-        Collapsible Group 3</a>
+        TV</a>
       </h4>
     </div>
-    <div id="collapse3" class="panel-collapse collapse">
-      <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat.</div>
+      <!-- collapse >> in << : opened or collapsed -->
+    <div id="collapse3" class="panel-collapse collapse in">
+      <div class="panel-body">
+          <pre>
+Dan and Sue go back to the shops. I dont understand,
+Dan says. The jogger hasnt got the money so we must
+look for someone different.
+Look, Sue says. Theres a TV camera over that shop
+door. Perhaps that can help us.
+#
+They go into the shop and watch the video.
+Look, Sue says. Theres the old woman. Shes getting
+money from the bank and putting it into her purse. Now
+shes putting the purse into the bag.
+Stop the video there, says Dan. Now , look carefully.
+Is anybody watching her?
+There are a lot of people in the street, Sue says. Im not
+sure. Is it that man with the long hair?
+#
+Perhaps, says Dan. Lets go on. What happens next?
+They watch the video. The jogger runs into the old lady.
+He stops and helps her. She shouts at him and he runs away.
+Then a lot of people come and help the old lady.
+Look! Sue says. The long-haired man has her arm .
+Yes, but that woman has her bag,  Dan says. Whats she
+doing with it? Oh! I cant see! Theres a man in front of her!
+#
+Listen, I have an idea, Dan says. You go to the bank
+tomorrow , and take some money out.
+Whys that a good idea? Sue asks.
+Because we can watch you, Dan answers. Get a lot of
+money from the bank, and let everybody in the street see it.
+Take a radio too, so you can talk to me.
+OK , Sue says. We can do that tomorrow morning, then.
+          </pre>
+      </div>
     </div>
   </div>
 

@@ -39,7 +39,7 @@ def class_concept(request):
 
     jdate_e = {
         # mode 10=blue & 20=yellow
-        "mode": "20",
+        "mode": "10",
         "contacts": contacts,
     }
 
