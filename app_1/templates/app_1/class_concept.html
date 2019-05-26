@@ -1,7 +1,33 @@
 {% extends 'app_1/base.html' %}
 {% load staticfiles %}
 {% block content %}
+
     <p>Get from class_concept: </p>
-    <h3>{{ data }}</h3>
-    <h3><a href={{ site_address }}>site_address</a></h3>
+
+    {% if mode == "10" %}
+        {% include 'app_1/class_concept_1.html' with data_1=contacts %}
+
+    {% elif mode == "20" %}
+        {% include 'app_1/class_concept_2.html' with data_1=contacts %}
+
+    {% elif mode == '0' %}
+        <h3>{{ data }}</h3>
+        <h3><a href={{ site_address }}>site_address</a></h3>
+
+    {% elif mode == '1' %}
+        <h3>{{ state }}</h3>
+        <h3>{{ role }}</h3>
+
+    {% elif mode == '2' %}
+        {% include 'app_1/class_concept_2.html' %}
+        <h3>{{ state }}</h3>
+        <h3>{{ time }}</h3>
+        <h3>{{ cause }}</h3>
+
+    {% elif mode == '3' %}
+        <h3>{{ type }}</h3>
+        <h3>{{ version }}</h3>
+
+    {% endif %}
+
 {% endblock %}

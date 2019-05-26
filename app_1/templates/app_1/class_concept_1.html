@@ -1,0 +1,31 @@
+<style>
+    .blue_style {
+        width: 300px;
+        height: 300px;
+        background: #7abaff;
+    }
+</style>
+
+<div class="blue_style">
+    <div class="table-responsive">
+        <table class="table">
+            <thead style="background: #999999;">
+                <tr>
+                    <th>ID</th>
+                    <th>IP</th>
+                    <th>Port</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for contact in data_1 %}
+                <tr>
+                    <td>{{ contact.id }}</td>
+                    <td>{{ contact.ip }}</td>
+                    <td>{{ contact.port }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {{ contact.full_name|upper }}
+    </div>
+</div>

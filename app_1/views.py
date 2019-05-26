@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.db.models import Q, OuterRef, Subquery
 import json
 
-from app_1.lib.class_1 import oop_1
+from app_1.lib.class_1 import oop_1, Maximume
 from app_1.models import Art, Bigtext, Server, OS
 import base64
 
@@ -20,12 +20,35 @@ def index_2(request):
 
 
 def class_concept(request):
-    a = oop_1("a")
-    return render(request, 'app_1/class_concept.html', eval(a))
+    contacts = Art.objects.all()
+    devel = Maximume.developer
+
+    # simple class
+    a = oop_1()
+    jdate_a = eval(a)
+
+    # static methon in class
+    b = Maximume.connect()
+    jdate_b = eval(b)
+
+    c = Maximume.diconnect()
+    jdate_c = eval(c)
+
+    d = Maximume.type_set()
+    jdate_d = eval(d)
+
+    jdate_e = {
+        # mode 10=blue & 20=yellow
+        "mode": "20",
+        "contacts": contacts,
+    }
+
+    return render(request, 'app_1/class_concept.html', jdate_e)
 
 
 def test(request):
     return render(request, 'app_1/test.html', {})
+
 
 def Desktop_slider(request):
     return render(request, 'app_1/Desktop_slider.html', {})
