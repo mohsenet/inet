@@ -33,6 +33,7 @@ urlpatterns = [
     path('queryset', views.queryset, name="queryset"),
     path('flex', views.flex, name="flex"),
     path('class_concept', views.class_concept, name="class_concept"),
+    path('audio', views.audio, name="audio"),
 ]
 
 if settings.DEBUG:

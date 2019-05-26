@@ -276,5 +276,9 @@ def flex(request):
     })
 
 
+def audio(request):
+    return render(request, 'app_1/audio.html', {})
+
+
 
 

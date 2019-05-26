@@ -1,0 +1,9 @@
+{% extends 'app_1/base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <p>audio</p>
+    <audio controls>
+      <source src="{% static 'other/01_The_jogger.mp3' %}" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+{% endblock %}
