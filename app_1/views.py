@@ -279,6 +279,9 @@ def flex(request):
 def audio(request):
     return render(request, 'app_1/audio.html', {})
 
+def Normal_Distribution_Table(request):
+    return render(request, 'app_1/Normal_Distribution_Table.html', {})
+
 
 
 

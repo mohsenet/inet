@@ -34,6 +34,7 @@ urlpatterns = [
     path('flex', views.flex, name="flex"),
     path('class_concept', views.class_concept, name="class_concept"),
     path('audio', views.audio, name="audio"),
+    path('Normal_Distribution_Table', views.Normal_Distribution_Table, name="Normal_Distribution_Table"),
 ]
 
 if settings.DEBUG:
